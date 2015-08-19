@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html ng-app="FCS">
+<head>
+  <title>FCS</title>
+  <!-- Polymer -->
+  <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+  <link rel="import" href="bower_components/paper-ripple/paper-ripple.html">
+  <!-- Polymer -->
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/animate.css/animate.css">
+  <link rel="stylesheet" type= "text/css" href = "css/index.css"/>
+  <link href='http://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
+
+</head>
+
+
+<body  ng-controller="FCSController as FCSCtrl">
+  <header class="navigation" role="banner">
+    <img id="js-background" class="transluent" src="/imgs/logo2.png">
+  </img>
+  <div class="general-container">
+    <div class="task-list-panel">
+      <div class="title">Fake Communication System by Jugend</div>
+      <div class="current-api">
+        <accordion>
+          <accordion-group ng-repeat="api in FCSCtrl.currentAPI">
+            <accordion-heading>
+              Namespace: {{api.Namespace}} | Event Name: {{api['Event Name']}}
+              <paper-ripple></paper-ripple>
+            </accordion-heading>
+            <div class="option">
+              <div class="input-group input-group-lg">
+                <span class="input-group-addon" id="sizing-addon1" style="background-color:transparent;color:linen;font-family:'Dosis'">Content</span>
+                <textarea type="text" class="form-control" placeholder="" aria-describedby="sizing-addon1" style="background:transparent;height: 100px;color: linen;font-size:1em;font-family:'Dosis'" ng-model="FCSCtrl.messageContent[api.id]"></textarea>
+              </div>
+            </div>
+            <button class="btn btn-success" ng-click="FCSCtrl.sendMessageToAPI(api)" ng-disabled="FCSCtrl.messageContent === ''">Send<paper-ripple></paper-ripple></button>
+            <button class="btn btn-danger" ng-click="FCSCtrl.removeAPI(api)">Remove<paper-ripple></paper-ripple></button>
+          </accordion-group>
+        </accordion>
+      </div>
+    </div>
+    <div class="create-task-panel">
+      <div class="task-options">
+
+        <div class="options-left">
+          <div class="option">
+            <div class="title">Create New API</div>
+          </div>
+          <div class="option">
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon" id="sizing-addon1" style="background-color:transparent;color:linen;font-family:'Dosis'">Namespace</span>
+              <input type="text" class="form-control" placeholder="" aria-describedby="sizing-addon1" style="background:transparent;color: white;font-family:'Dosis'" ng-model="FCSCtrl.newAPIInfo['Namespace']">
+            </div>
+          </div>
+          <div class="option">
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon" id="sizing-addon1" style="background-color:transparent;color:linen;font-family:'Dosis'">Event Name</span>
+              <input type="text" class="form-control" placeholder="" aria-describedby="sizing-addon1" style="background:transparent;color: white;font-family:'Dosis'" ng-model="FCSCtrl.newAPIInfo['Event Name']">
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="option">
+        <div class="input-group input-group-lg">
+        <span class="input-group-addon" id="sizing-addon1" style="background-color:transparent;color:linen;font-family:'Dosis'">Content</span>
+        <textarea type="text" class="form-control" placeholder="" aria-describedby="sizing-addon1" style="background:transparent;height: 100px;color: white;font-family:'Dosis'" ng-model="FCSCtrl.newAPIInfo['Content']"></textarea>
+      </div>
+    </div> -->
+    <div class="options-right">
+      <button class="btn btn-success" ng-click="FCSCtrl.createNewAPI()" ng-disabled = "FCSCtrl.newAPIInfo['Event Name'] === '' || FCSCtrl.newAPIInfo.Namespace === ''"><i class="glyphicon glyphicon-ok"></i><paper-ripple></paper-ripple></button>
+      <button class="btn btn-warning" ng-click="FCSCtrl.clearAPIInfo()" ><i class="glyphicon glyphicon-remove"></i><paper-ripple></paper-ripple></button>
+    </div>
+  </div>
+</div>
+</div>
+
+<script src="/bower_components/jquery/dist/jquery.js"  ></script>
+<!--jQuery-->
+<script src="/bower_components/angular/angular.js"  ></script>                                                    <!--Angularjs-->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.js"  ></script>                               <!--Bootstrap-->
+
+<script src="/socket.io/socket.io.js"></script>                                                                   <!--socketio-->
+<script src="/bower_components/angular-socket-io/socket.js"></script>                                             <!--angularsocketio-->
+<script src="/bower_components/angular-bootstrap/ui-bootstrap.js"></script>                                       <!--angularUIBootstrap-->
+<script src="/bower_components/angular-cookies/angular-cookies.js"></script>                                       <!--angularCookies-->
+
+<script src="FCS.js"></script>
+<!--FCS.js-->
+<script src="FCSControllers.js"></script>
+<!--FCSControllers.js-->
+<script src="FCSServices.js"></script>
+<!--FCSServices.js-->
+</body>
+</html>

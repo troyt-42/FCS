@@ -1,0 +1,115 @@
+@import "bourbon"
+@import "bourbon", "neat"
+@import "texture"
+html
+  height: 100%
+
+body
+  height: 100%
+  overflow: hidden
+header
+  height: 100%
+  .transluent
+    z-index: -1
+    position: absolute
+    top: 50%
+    bottom: 0
+    right: -300px
+    width: 100%
+    opacity: 1
+.general-container
+  +span-columns(12)
+  height: 100%
+  +texture(0deg, rgba(shade(crimson, 40%) , 0.8), rgba(crimson, 0.9), 30, 0)
+  .task-list-panel
+    +span-columns(3)
+    height: 100%
+    border-right: 2px solid linen
+    .title
+      +span-columns(12)
+      +pad()
+      color: linen
+      font-family: 'Dosis'
+      border-bottom: 2px solid linen
+    .current-api
+      +span-columns(12)
+      .panel
+        border-radius: 0
+        border-top: 0
+        border-right: 0
+        margin: 0
+      .panel-heading
+        cursor: pointer
+        position: relative
+        background: skyblue
+        border-radius: 0
+      .panel-body
+        background: black
+
+        button
+          +span-columns(6)
+          margin-top: 5px
+          background: limegreen
+          font-family: 'Dosis'
+          outline: none
+          border-color: white
+          color: black
+          text-shadow: none
+          font-size: 1em
+          position: relative
+          box-shadow: none
+          &:last-child
+            background: darkorange
+  .create-task-panel
+    +span-columns(9)
+    +display(flex)
+    +align-items(center)
+    +justify-content(center)
+    height: 100%
+    .task-options
+      +span-columns(9)
+      +display(flex)
+      +align-items(center)
+      +justify-content(center)
+      .options-left
+        +span-columns(9)
+        border-right: 2px solid white
+        +pad()
+        .option
+          color: linen
+          margin-bottom: 5px
+          +display(flex)
+          +align-items(center)
+          +justify-content(flex-end)
+          .title
+            +span-columns(12)
+            +pad()
+            font-size: 1.5em
+            color: linen
+            font-family: 'Dosis'
+            text-align: center
+      .options-right
+        +span-columns(3)
+        button:first-child
+          +span-columns(12)
+          margin-bottom: 5px
+          background: transparent
+          font-family: 'Dosis'
+          outline: none
+          border-color: white
+          color: linen
+          height: 50px
+          font-size: 2em
+          position: relative
+          box-shadow: none
+        button:nth-child(2)
+          +span-columns(12)
+          background: transparent
+          font-family: 'Dosis'
+          outline: darkorange
+          border-color: black
+          color: black
+          height: 50px
+          font-size: 2em
+          position: relative
+          box-shadow: none

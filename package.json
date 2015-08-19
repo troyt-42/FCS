@@ -1,0 +1,11 @@
+{
+  "name": "Importer-NodeJs-Server",
+  "description": "A test project of DAVE2",
+  "version": "0.0.1",
+  "repository": "https://github.com/watrool/Importer.git",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.9.5",
+    "socket.io": "^1.3.5"
+  }
+}
